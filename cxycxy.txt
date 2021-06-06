@@ -1,0 +1,21 @@
+CREATE SCHEMA Tests
+go
+
+Create Table tests.FileProcessTest
+(
+	FileName varchar(255) NULL,
+	ExpectedValue [bit] NOT NULL,
+	CausesException [bit] NOT NULL
+
+)
+Go
+
+insert into Tests.FileProcessTest
+Values('C:\Windows\Regedit.exe', 1, 0);
+
+insert into Tests.FileProcessTest
+Values('C:\BadFileName.txt', 0, 0);
+
+insert into Tests.FileProcessTest
+Values(null, 1, 0);
+
